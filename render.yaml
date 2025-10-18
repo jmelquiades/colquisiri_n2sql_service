@@ -1,0 +1,22 @@
+services:
+  - type: web
+    name: n2sql-service
+    env: python
+    plan: free
+    buildCommand: pip install -r requirements.txt
+    startCommand: uvicorn src.app:app --host 0.0.0.0 --port $PORT
+    healthCheckPath: /health
+    envVars:
+      - key: PG_DEST_DSN       # <-- Setear en Render (usuario SOLO LECTURA)
+        sync: false
+      - key: APP_TZ
+        value: America/Lima
+      # (Opcional Azure OpenAI si luego lo usas)
+      # - key: AZURE_OPENAI_ENDPOINT
+      #   sync: false
+      # - key: AZURE_OPENAI_API_KEY
+      #   sync: false
+      # - key: AZURE_OPENAI_API_VERSION
+      #   value: 2024-06-01
+      # - key: AZURE_OPENAI_DEPLOYMENT_GPT
+      #   value: gpt-4o-prod

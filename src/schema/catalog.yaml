@@ -1,0 +1,14 @@
+datasets:
+  odoo_replica.stg_res_partner:
+    table: "odoo_replica.stg_res_partner"
+    columns: [id, display_name, vat, email, company_id]
+    filters:  [display_name, vat, email, company_id]
+    default_limit: 200
+    order_by: "display_name ASC"
+
+  odoo_replica.stg_account_move:
+    table: "odoo_replica.stg_account_move"
+    columns: [id, name, move_type, state, payment_state, partner_id, invoice_date, invoice_date_due, amount_total, amount_residual, currency_id, company_id]
+    filters:  [name, move_type, state, payment_state, partner_id, invoice_date, invoice_date_due, amount_total, amount_residual, currency_id, company_id]
+    default_limit: 200
+    order_by: "invoice_date DESC"
