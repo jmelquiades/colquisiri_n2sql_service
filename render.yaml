@@ -1,22 +1,29 @@
 services:
   - type: web
-    name: n2sql-service
+    name: colquisiri-n2sql
     env: python
     plan: free
-    buildCommand: pip install -r requirements.txt
-    startCommand: uvicorn src.app:app --host 0.0.0.0 --port $PORT
-    healthCheckPath: /health
+    buildCommand: pip install --upgrade pip && pip install -r requirements.txt
+    startCommand: uvicorn app:app --host 0.0.0.0 --port $PORT
     envVars:
-      - key: PG_DEST_DSN       # <-- Setear en Render (usuario SOLO LECTURA)
+      - key: LOG_LEVEL
+        value: INFO
+      - key: OPENAI_PROVIDER
+        value: openai
+      - key: OPENAI_MODEL
+        value: gpt-4o-mini
+      # OpenAI (si usas api.openai.com)
+      - key: OPENAI_API_KEY
         sync: false
-      - key: APP_TZ
-        value: America/Lima
-      # (Opcional Azure OpenAI si luego lo usas)
-      # - key: AZURE_OPENAI_ENDPOINT
-      #   sync: false
-      # - key: AZURE_OPENAI_API_KEY
-      #   sync: false
-      # - key: AZURE_OPENAI_API_VERSION
-      #   value: 2024-06-01
-      # - key: AZURE_OPENAI_DEPLOYMENT_GPT
-      #   value: gpt-4o-prod
+      # Azure OpenAI (si prefieres Azure)
+      - key: AZURE_OPENAI_ENDPOINT
+        sync: false
+      - key: AZURE_OPENAI_API_KEY
+        sync: false
+      - key: AZURE_OPENAI_DEPLOYMENT
+        sync: false
+      - key: AZURE_OPENAI_API_VERSION
+        value: "2024-08-01-preview"
+      # Postgres
+      - key: DATABASE_URL
+        sync: false

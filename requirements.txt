@@ -1,6 +1,14 @@
-fastapi
-uvicorn[standard]
-pydantic
-psycopg[binary]
-PyYAML
-python-dotenv
+fastapi==0.110.0
+uvicorn[standard]==0.29.0
+
+# DB Postgres (async)
+asyncpg==0.29.0
+
+# LLM
+openai==1.46.0
+
+# Validación
+pydantic==2.7.4
+
+# Util
+python-dotenv==1.0.1
