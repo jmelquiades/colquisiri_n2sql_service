@@ -1,8 +1,8 @@
 from fastapi import FastAPI, HTTPException
 from pydantic import BaseModel
-from handlers.validate_sql import validate_sql
-from handlers.execute_sql import execute_sql
-from handlers.sql_gen import partners_search, moves_expiring
+from src.handlers.validate_sql import validate_sql
+from src.handlers.execute_sql import execute_sql
+from src.handlers.sql_gen import partners_search, moves_expiring
 
 app = FastAPI(title="CRITERIA DataTalk - N2SQL")
 
