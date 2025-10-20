@@ -1,18 +1,10 @@
 fastapi==0.110.0
-uvicorn[standard]==0.29.0
-
-# DB Postgres (async)
-asyncpg==0.29.0
-
-# LLM
+uvicorn==0.29.0
+# SDK OpenAI compatible con httpx 0.27.x
 openai==1.46.0
+httpx==0.27.2
 
-# Validación
-pydantic==2.7.4
+# PostgreSQL (binario, sin compilación)
+psycopg[binary]==3.2.1
 
-# Util
 python-dotenv==1.0.1
-
-
-psycopg[binary]==3.1.18
-openai>=1.40,<2
